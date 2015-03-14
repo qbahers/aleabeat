@@ -1,0 +1,44 @@
+.header {
+    margin-bottom: 30px;
+}
+
+.container {
+    max-width: 800px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.jumbotron {
+    text-align: center;
+    border: 1px solid #e5e5e5;
+    border-radius: 6px;
+    padding: 10px;
+}
+
+.player {
+    height: 300px; /* TO BE REMOVED */
+}
+
+.button-secondary {
+    color: white;
+    border-radius: 4px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.button-xlarge {
+    font-size: 125%;
+}
+
+.button-up {
+    background: rgb(28, 184, 65); /* this is a green */
+}
+
+.button-down {
+    background: rgb(202, 60, 60); /* this is a maroon */
+}
+
+.bottom {
+    padding-top: 20px;
+}
