@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Your page title</title>
+    <title>Xplore</title>
 
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
 
@@ -16,14 +16,23 @@
     Your HTML goes here. Visit purecss.io/layouts/ for some sample HTML code.
     -->
 
-    <div class="header"></div>
+    <div class="header">
+        <div class="pure-menu pure-menu-horizontal pure-menu-scrollable">
+            <a href="#" class="pure-menu-heading">Xplore</a>
+
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item pure-menu-selected"><a href="#" class="pure-menu-link">Home</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Trending</a></li>
+            </ul>
+        </div>
+    </div>
 
     <div class="container" ng-controller="TracksController">
         <div class="jumbotron">
             <div id="player"></div>
             <div class="controls">
                 <button class="pure-button button-secondary button-xlarge button-up">Up</button>
-                <button class="pure-button button-secondary button-xlarge button-down" ng-click="next()">Down</button>
+                <button class="pure-button button-secondary button-xlarge button-down" ng-click="next(true)">Down</button>
             </div>
         </div>
     </div>

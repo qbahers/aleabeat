@@ -8,14 +8,14 @@ function TracksController ($scope, $http) {
     $http.get('/client/tracks.json').success(function(data) {
         $scope.tracks = data;
 
-        $scope.next = function () {
+        $scope.next = function (autoplay) {
             var track     = $scope.tracks[Math.floor(Math.random()*($scope.tracks).length)];
             var track_id  = track.id;
             var track_url = "http://api.soundcloud.com/tracks/" + track_id;
 
             SC.oEmbed(
                 track_url,
-                {auto_play: true, show_comments: false},
+                {auto_play: autoplay, show_comments: false},
                 document.getElementById("player")
             );
         };
@@ -25,7 +25,7 @@ function TracksController ($scope, $http) {
                 client_id: 'YOUR_CLIENT_ID'
             });
 
-            $scope.next();
+            $scope.next(false);
         }
 
         $scope.init();
