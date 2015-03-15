@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html ng-app="xplore-app">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,12 +8,33 @@
 
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
 
-    <link rel="stylesheet" type="text/css" href="custom.css">
+    <link rel="stylesheet" type="text/css" href="/client/custom.css">
 </head>
 
 <body>
     <!--
     Your HTML goes here. Visit purecss.io/layouts/ for some sample HTML code.
     -->
+
+    <div class="header"></div>
+
+    <div class="container" ng-controller="TracksController">
+        <div class="jumbotron">
+            <div id="player"></div>
+            <div class="controls">
+                <button class="pure-button button-secondary button-xlarge button-up">Up</button>
+                <button class="pure-button button-secondary button-xlarge button-down" ng-click="next()">Down</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer"></footer>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular.js"></script>
+
+    <script src="http://connect.soundcloud.com/sdk.js"></script>
+
+    <script src="/client/module.js"></script>
+    <script src="/client/tracks.controller.js"></script>
 </body>
 </html>

@@ -17,8 +17,8 @@
     padding: 10px;
 }
 
-.player {
-    height: 300px; /* TO BE REMOVED */
+#player {
+    max-height: 600px; /* TO BE REMOVED */
 }
 
 .button-secondary {
