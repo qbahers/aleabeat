@@ -5,5 +5,8 @@ angular
   Track.$inject = ['$resource'];
 
   function Track ($resource) {
-    return $resource('/api/tracks/:id');
+    return $resource('/api/tracks/:id', 
+    	{ id: '@id' }, 
+    	{ update: { method: 'PUT' }}
+	);
   }

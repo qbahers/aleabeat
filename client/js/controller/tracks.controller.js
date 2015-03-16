@@ -2,22 +2,19 @@ angular
     .module('xplore-app')
     .controller('TracksController', TracksController);
 
-TracksController.$inject = ['$scope', '$http'];
+TracksController.$inject = ['$scope', 'Track', '$routeParams', '$location'];
 
-function TracksController ($scope, $http) {
-    $http.get('/client/tracks.json').success(function(data) {
-        $scope.tracks = data;
+function TracksController ($scope, Track, $routeParams, $location) {
+    $scope.tracks = [];
 
-        $scope.next = function (autoplay) {
+    Track.query(function (result) {
+        $scope.tracks = result;
+
+        $scope.next = function () {
             var track     = $scope.tracks[Math.floor(Math.random()*($scope.tracks).length)];
             var track_id  = track.id;
-            var track_url = "http://api.soundcloud.com/tracks/" + track_id;
 
-            SC.oEmbed(
-                track_url,
-                {auto_play: autoplay, show_comments: false},
-                document.getElementById("player")
-            );
+            $location.path('/' + track_id);
         };
 
         $scope.init = function () {
@@ -25,9 +22,22 @@ function TracksController ($scope, $http) {
                 client_id: 'YOUR_CLIENT_ID'
             });
 
-            $scope.next(false);
+            var track_url = "http://api.soundcloud.com/tracks/" + $routeParams.trackId;
+
+            SC.oEmbed(
+                track_url,
+                {auto_play: false, show_comments: false},
+                document.getElementById("player")
+            );
         }
 
         $scope.init();
+
+        $scope.upvote = function () {
+            Track.get({id: $routeParams.trackId}, function (track) {
+                track.upvotes = track.upvotes + 1;
+                track.$update();
+            });
+        }
     });
 };
