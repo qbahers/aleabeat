@@ -60,7 +60,8 @@
     "favoritings_count": 2,
     "comment_count": 3,
     "attachments_uri": "https://api.soundcloud.com/tracks/13158665/attachments",
-    "policy": "ALLOW"
+    "policy": "ALLOW",
+    "upvotes": 42
 },
 {
     "kind": "track",
@@ -116,7 +117,8 @@
     "favoritings_count": 0,
     "comment_count": 1,
     "attachments_uri": "https://api.soundcloud.com/tracks/13158666/attachments",
-    "policy": "ALLOW"
+    "policy": "ALLOW",
+    "upvotes": 24
 },
 {
     "kind": "track",
@@ -173,5 +175,6 @@
     "favoritings_count": 0,
     "comment_count": 1,
     "attachments_uri": "https://api.soundcloud.com/tracks/13158667/attachments",
-    "policy": "ALLOW"
+    "policy": "ALLOW",
+    "upvotes": 240
 }]
