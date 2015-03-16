@@ -1,0 +1,1 @@
+angular.module('xplore-app', ['ngRoute']);
