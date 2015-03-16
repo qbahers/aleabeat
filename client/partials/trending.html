@@ -3,7 +3,7 @@
 		<li class="trending-track" ng-repeat="track in tracks | orderBy:'upvotes':true">
 			<p class="track-details">
 				{{track.title}} -
-				{{track.user.username}} -
+				{{track.username}} -
 				{{track.upvotes}}
 			</p>
 		</li>

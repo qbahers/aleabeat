@@ -1,1 +1,1 @@
-angular.module('xplore-app', ['ngRoute']);
+angular.module('xplore-app', ['ngRoute', 'ngResource']);
