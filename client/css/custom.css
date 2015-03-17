@@ -33,7 +33,7 @@
 }
 
 .button-down {
-    background: #c0c0c0;
+    background: #bbb;
 }
 
 .bottom {
@@ -72,6 +72,14 @@
 }
 
 .trending-today {
+  margin-left: 20px;
+  color: #888;
+  font-size: 24px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.favorites-title {
   margin-left: 20px;
   color: #888;
   font-size: 24px;
