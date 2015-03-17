@@ -13,7 +13,7 @@ function TracksController ($scope, Track, $routeParams, $location) {
         Track.get({ _id: $routeParams._id }, function (track) {
             SC.oEmbed(
                 "http://api.soundcloud.com/tracks/" + track.id,
-                { auto_play: false, show_comments: false },
+                { auto_play: true, show_comments: false },
                 document.getElementById("player")
             );
         });

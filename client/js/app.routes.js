@@ -2,7 +2,7 @@ angular
     .module('xplore-app')
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider
-            .when('/trending', {
+            .when('/', {
                 templateUrl: 'client/partials/trending.html',
                 controller:  'TrendingController'
             })
@@ -10,7 +10,7 @@ angular
                 templateUrl: '/client/partials/player.html',
                 controller:  'TracksController'
             })
-            //.otherwise({
-            //    redirectTo: '/'
-            //});
+            .otherwise({
+                redirectTo: '/'
+            });
     }]);
