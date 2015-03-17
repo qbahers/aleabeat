@@ -15,7 +15,7 @@ app.get('/', function (req, res) {
 
 app.use('/client', express.static(__dirname + '/client'));
 
-app.get('/api/tracks', tracksController.list);
+app.get('/api/tracks',     tracksController.list);
 app.get('/api/tracks/:id', tracksController.read);
 app.put('/api/tracks/:id', tracksController.update);
 

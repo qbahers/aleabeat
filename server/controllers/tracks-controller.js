@@ -7,13 +7,13 @@ module.exports.list = function (req, res) {
 };
 
 module.exports.update = function (req, res) {
-  Track.findOneAndUpdate({ 'id': req.params.id }, req.body, function (err, result) {
+  Track.findByIdAndUpdate(req.params.id, req.body, function (err, result) {
     res.json(result);
   });
 }
 
 module.exports.read = function (req, res) {
-  Track.findOne({ 'id': req.params.id }, function (err, result) {
+  Track.findById(req.params.id, function (err, result) {
     res.json(result);
   });
 };

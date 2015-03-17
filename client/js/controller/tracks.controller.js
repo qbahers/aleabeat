@@ -5,39 +5,33 @@ angular
 TracksController.$inject = ['$scope', 'Track', '$routeParams', '$location'];
 
 function TracksController ($scope, Track, $routeParams, $location) {
-    $scope.tracks = [];
+    $scope.init = function () {
+        SC.initialize({
+            client_id: 'YOUR_CLIENT_ID'
+        });
 
-    Track.query(function (result) {
-        $scope.tracks = result;
-
-        $scope.next = function () {
-            var track     = $scope.tracks[Math.floor(Math.random()*($scope.tracks).length)];
-            var track_id  = track.id;
-
-            $location.path('/' + track_id);
-        };
-
-        $scope.init = function () {
-            SC.initialize({
-                client_id: 'YOUR_CLIENT_ID'
-            });
-
-            var track_url = "http://api.soundcloud.com/tracks/" + $routeParams.trackId;
-
+        Track.get({ _id: $routeParams._id }, function (track) {
             SC.oEmbed(
-                track_url,
-                {auto_play: false, show_comments: false},
+                "http://api.soundcloud.com/tracks/" + track.id,
+                { auto_play: false, show_comments: false },
                 document.getElementById("player")
             );
-        }
+        });
+    };
 
-        $scope.init();
+    $scope.init();
 
-        $scope.upvote = function () {
-            Track.get({id: $routeParams.trackId}, function (track) {
-                track.upvotes = track.upvotes + 1;
-                track.$update();
-            });
-        }
-    });
+    $scope.upvote = function () {
+        Track.get({ _id: $routeParams._id }, function (track) {
+            track.upvotes += 1;
+            track.$update();
+        });
+    };
+
+    $scope.next = function () {
+        Track.query(function (tracks) {
+            var next_track = tracks[Math.floor(Math.random()*tracks.length)];
+            $location.path('/' + next_track._id);
+        });
+    };
 };

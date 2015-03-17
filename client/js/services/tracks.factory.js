@@ -2,11 +2,11 @@ angular
     .module('xplore-app')
     .factory('Track', Track);
 
-  Track.$inject = ['$resource'];
+Track.$inject = ['$resource'];
 
-  function Track ($resource) {
-    return $resource('/api/tracks/:id', 
-    	{ id: '@id' }, 
-    	{ update: { method: 'PUT' }}
+function Track ($resource) {
+    return $resource('/api/tracks/:_id', 
+    	{ _id: '@_id' }, 
+    	{ update: { method: 'PUT' } }
 	);
-  }
+}

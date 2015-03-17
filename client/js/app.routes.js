@@ -6,7 +6,7 @@ angular
                 templateUrl: 'client/partials/trending.html',
                 controller:  'TrendingController'
             })
-            .when('/:trackId', {
+            .when('/:_id', {
                 templateUrl: '/client/partials/player.html',
                 controller:  'TracksController'
             })
