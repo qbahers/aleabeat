@@ -1,11 +1,12 @@
 <div class="container" ng-controller="TrendingController">
+	<p class="trending-today">Today<p>
 	<ol id="trending-tracks">
 		<li class="trending-track" ng-repeat="track in tracks | orderBy:'upvotes':true">
-			<p class="track-details">
-				{{track.title}} -
-				{{track.author}} -
-				{{track.upvotes}}
-			</p>
+			<div class="track-details">
+				<p class="track-upvotes"><i class="fa fa-heart"></i>{{track.upvotes}}</p>
+				<p class="track-title">{{track.title}}</p>
+				<p class="track-artist">{{track.artist}}</p>
+			</div>
 		</li>
 	</ol>
 </div>

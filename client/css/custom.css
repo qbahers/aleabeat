@@ -38,3 +38,37 @@
 .bottom {
     padding-top: 20px;
 }
+
+.track-details {
+  border-bottom: 1px solid #eee;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.track-title {
+  margin-top: 10px;
+}
+
+.track-artist {
+  color: #666;
+  font-size: 15px;
+}
+
+.track-upvotes {
+  float: right;
+  margin-top: 10px;
+  color: #888;
+  font-size: 12px;
+}
+
+.fa {
+    margin-right: 4px;
+}
+
+.trending-today {
+  margin-left: 20px;
+  color: #888;
+  font-size: 24px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
