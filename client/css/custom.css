@@ -29,11 +29,11 @@
 }
 
 .button-up {
-    background: rgb(28, 184, 65); /* this is a green */
+    background: rgba(255, 85, 0, 0.9);
 }
 
 .button-down {
-    background: rgb(202, 60, 60); /* this is a maroon */
+    background: #c0c0c0;
 }
 
 .bottom {
@@ -44,6 +44,11 @@
   border-bottom: 1px solid #eee;
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+.tracks-details, a {
+  color:inherit;
+  text-decoration: none;
 }
 
 .track-title {
