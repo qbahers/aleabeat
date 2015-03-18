@@ -6,9 +6,9 @@ TracksController.$inject = ['$scope', 'Track', '$routeParams', '$location'];
 
 function TracksController ($scope, Track, $routeParams, $location) {
     $scope.init = function () {
-        SC.initialize({
-            client_id: 'YOUR_CLIENT_ID'
-        });
+        //SC.initialize({
+        //    client_id: 'YOUR_CLIENT_ID'
+        //});
 
         Track.get({ _id: $routeParams._id }, function (track) {
             SC.oEmbed(

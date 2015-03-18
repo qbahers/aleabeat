@@ -1,5 +1,8 @@
 <div class="container" ng-controller="TrendingController">
 	<p class="favorites-title">Your Favorites<p>
 	<ul id="favorite-tracks">
+		<li class="" ng-repeat="favorite in favorites">
+			{{favorite.title}} - {{favorite.artist}}
+		</li>
 	</ul>
 </div>
