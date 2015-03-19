@@ -2,9 +2,11 @@ angular
     .module('xplore-app')
     .controller('TracksController', TracksController);
 
-TracksController.$inject = ['$scope', 'Track', '$routeParams', '$location'];
+TracksController.$inject = ['$scope', 'Track', 'User', '$routeParams', '$location'];
 
-function TracksController ($scope, Track, $routeParams, $location) {
+function TracksController ($scope, Track, User, $routeParams, $location) {
+    var disableUpvoteButton = false;
+
     $scope.init = function () {
         //SC.initialize({
         //    client_id: 'YOUR_CLIENT_ID'
@@ -16,6 +18,21 @@ function TracksController ($scope, Track, $routeParams, $location) {
                 { auto_play: true, show_comments: false },
                 document.getElementById("player")
             );
+
+            // Disclaimer: The user id is hardcoded for now, until an
+            // authentication system is implemented.
+            User.get({ _id: '550c0bd1a757f45a02db6fe5' }, function (user) {
+                tracks = user.favoriteTracks;
+
+                // TODO: Check if there is a better way to figure out if the
+                // track being played has already been favorited
+                for (i = 0; i < tracks.length; i++) {
+                    if (tracks[i]._id === track._id) {
+                        disableUpvoteButton = true;
+                        break;
+                    }
+                }
+            });
         });
     };
 
@@ -33,5 +50,9 @@ function TracksController ($scope, Track, $routeParams, $location) {
             var next_track = tracks[Math.floor(Math.random()*tracks.length)];
             $location.path('/' + next_track._id);
         });
+    };
+
+    $scope.isDisabled = function (track) {
+        return disableUpvoteButton;
     };
 };
