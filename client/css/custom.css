@@ -42,7 +42,7 @@
 
 .track-details {
   border-bottom: 1px solid #eee;
-  padding-top: 10px;
+  padding-top: 20px;
   padding-bottom: 10px;
 }
 
@@ -77,6 +77,10 @@
   font-size: 24px;
   padding-bottom: 15px;
   border-bottom: 1px solid #eee;
+}
+
+.favorite-tracks, ul {
+  list-style-type: none;
 }
 
 .favorites-title {

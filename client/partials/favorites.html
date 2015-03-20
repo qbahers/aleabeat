@@ -1,8 +1,11 @@
-<div class="container" ng-controller="TrendingController">
+<div class="container favorite-tracks" ng-controller="TrendingController">
 	<p class="favorites-title">Your Favorites<p>
-	<ul id="favorite-tracks">
-		<li class="" ng-repeat="favorite in favorites">
-			{{favorite.title}} - {{favorite.artist}}
+	<ul>
+		<li class="favorite-track" ng-repeat="favorite in favorites">
+			<div class="track-details">
+				<a ng-href="/#/{{track._id}}" class="track-title">{{favorite.title}}</a>
+				<p class="track-artist">{{favorite.artist}}</p>
+			</div>
 		</li>
 	</ul>
 </div>
