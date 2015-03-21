@@ -8,10 +8,6 @@ function TracksController ($scope, Track, User, $routeParams, $location) {
     var disableUpvoteButton = false;
 
     $scope.init = function () {
-        //SC.initialize({
-        //    client_id: 'YOUR_CLIENT_ID'
-        //});
-
         Track.get({ _id: $routeParams._id }, function (track) {
             SC.oEmbed(
                 "http://api.soundcloud.com/tracks/" + track.id,
@@ -43,6 +39,21 @@ function TracksController ($scope, Track, User, $routeParams, $location) {
             track.upvotes += 1;
             track.$update();
         });
+
+        // Disclaimer: The user id is hardcoded for now, until an
+        // authentication system is implemented.
+        User.get({ _id: "550c0bd1a757f45a02db6fe5" }, function (user) {
+            var favorites = [];
+            user.favoriteTracks.forEach (function (track) {
+                favorites.push(track._id);
+            });
+            favorites.push($routeParams._id);
+
+            user.favoriteTracks = favorites;
+            user.$update();
+
+            disableUpvoteButton = true;
+        });
     };
 
     $scope.next = function () {
@@ -52,7 +63,7 @@ function TracksController ($scope, Track, User, $routeParams, $location) {
         });
     };
 
-    $scope.isDisabled = function (track) {
+    $scope.isDisabled = function () {
         return disableUpvoteButton;
     };
 };

@@ -21,6 +21,7 @@ app.get('/api/tracks/:id', tracksController.read);
 app.put('/api/tracks/:id', tracksController.update);
 
 app.get('/api/users/:id', usersController.read);
+app.put('/api/users/:id', usersController.update);
 
 app.listen(3000, function() {
   console.log('I\'m Listening...');
