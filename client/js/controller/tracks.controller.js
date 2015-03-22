@@ -5,7 +5,7 @@ angular
 TracksController.$inject = ['$scope', 'Track', 'User', '$routeParams', '$location'];
 
 function TracksController ($scope, Track, User, $routeParams, $location) {
-    var disableUpvoteButton = false;
+    $scope.like = "Like";
 
     $scope.init = function () {
         Track.get({ _id: $routeParams._id }, function (track) {
@@ -24,7 +24,7 @@ function TracksController ($scope, Track, User, $routeParams, $location) {
                 // track being played has already been favorited
                 for (i = 0; i < tracks.length; i++) {
                     if (tracks[i]._id === track._id) {
-                        disableUpvoteButton = true;
+                        $scope.like = "Unlike";
                         break;
                     }
                 }
@@ -36,7 +36,7 @@ function TracksController ($scope, Track, User, $routeParams, $location) {
 
     $scope.upvote = function () {
         Track.get({ _id: $routeParams._id }, function (track) {
-            track.upvotes += 1;
+            track.upvotes = ($scope.like === "Like") ? track.upvotes + 1 : track.upvotes - 1;
             track.$update();
         });
 
@@ -47,12 +47,19 @@ function TracksController ($scope, Track, User, $routeParams, $location) {
             user.favoriteTracks.forEach (function (track) {
                 favorites.push(track._id);
             });
-            favorites.push($routeParams._id);
+
+            if ($scope.like === "Like") {
+                favorites.push($routeParams._id);
+            }
+            else {
+                var index = favorites.indexOf($routeParams._id);
+                favorites.splice(index, 1);
+            }
 
             user.favoriteTracks = favorites;
             user.$update();
 
-            disableUpvoteButton = true;
+            $scope.like = ($scope.like === "Like") ? "Unlike" : "Like";
         });
     };
 
@@ -61,9 +68,5 @@ function TracksController ($scope, Track, User, $routeParams, $location) {
             var next_track = tracks[Math.floor(Math.random()*tracks.length)];
             $location.path('/' + next_track._id);
         });
-    };
-
-    $scope.isDisabled = function () {
-        return disableUpvoteButton;
     };
 };
