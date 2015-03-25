@@ -1,6 +1,6 @@
 var express          = require('express'),
     app              = express(),
-    //cookieParser     = require('cookie-parser'),
+    cookieParser     = require('cookie-parser'),
     bodyParser       = require('body-parser'),
     mongoose         = require('mongoose'),
     session          = require('express-session'),
@@ -10,7 +10,7 @@ mongoose.connect('mongodb://localhost:27017/xplore');
 
 require('./server/config/passport')(passport);
 
-//app.use(cookieParser());
+app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(session({ secret: 'keyboard cat' }));

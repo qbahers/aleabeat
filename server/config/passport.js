@@ -1,5 +1,6 @@
 var passport         = require('passport'),
     TwitterStrategy  = require('passport-twitter').Strategy,
+    User             = require('./../models/user'),
     configAuth       = require('./auth');
 
 module.exports = function(passport) {
@@ -18,11 +19,29 @@ module.exports = function(passport) {
     },
     function(token, tokenSecret, profile, done) {
       console.log(profile);
-      return done(null, profile);
-      //User.findOrCreate(..., function(err, user) {
-      //  if (err) { return done(err); }
-      //  done(null, user);
-      //});
+      
+      User.findOne({ 'twitter.id': profile.id }, function(err, user) {
+        if (err)
+          return done(err);
+
+        if (user) {
+          return done(null, user);
+        }
+        else {
+          var newUser = new User();
+
+          newUser.twitter.id          = profile.id;
+          newUser.twitter.token       = token;
+          newUser.twitter.username    = profile.username;
+          newUser.twitter.displayName = profile.displayName;
+
+          newUser.save(function(err) {
+            if (err)
+              throw err;
+            return done(null, newUser);
+          });
+        }
+      });
     }
   ));
 }
