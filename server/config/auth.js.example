@@ -1,4 +1,6 @@
 module.exports = {
-  'TWITTER_CONSUMER_KEY' :   'your-consumer-key-here',
-  'TWITTER_CONSUMER_SECRET': 'your-client-secret-here'
+  'TWITTER': {
+    'CONSUMER_KEY':    'your-consumer-key-here',
+    'CONSUMER_SECRET': 'your-client-secret-here'
+  }
 }
