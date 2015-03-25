@@ -1,12 +1,12 @@
 <div class="container" ng-controller="TrendingController">
-	<p class="trending-today">Popular Today<p>
-	<ol id="trending-tracks">
-		<li class="trending-track" ng-repeat="track in tracks | orderBy:'upvotes':true">
-			<div class="track-details">
-				<p class="track-upvotes"><i class="fa fa-heart"></i>{{track.upvotes}}</p>
-				<a ng-href="/#/{{track._id}}" class="track-title">{{track.title}}</a>
-				<p class="track-artist">{{track.artist}}</p>
-			</div>
-		</li>
-	</ol>
+    <p class="trending-today">Popular Today<p>
+    <ol id="trending-tracks">
+        <li class="trending-track" ng-repeat="track in tracks | orderBy:'upvotes':true">
+            <div class="track-details">
+                <p class="track-upvotes"><i class="fa fa-heart"></i>{{track.upvotes}}</p>
+                <a ng-href="/#/{{track._id}}" class="track-title">{{track.title}}</a>
+                <p class="track-artist">{{track.artist}}</p>
+            </div>
+        </li>
+    </ol>
 </div>
