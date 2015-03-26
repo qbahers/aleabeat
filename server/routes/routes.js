@@ -10,13 +10,24 @@ module.exports = function(app, passport) {
   app.get('/api/users/:id', usersController.read);
   app.put('/api/users/:id', usersController.update);
 
+  app.get('/account', ensureAuthenticated, function(req, res){
+    res.json({ user: req.user });
+  });
+
   app.get('/auth/twitter', passport.authenticate('twitter'));
 
   app.get('/auth/twitter/callback', 
     passport.authenticate('twitter', { successRedirect: '/',
                                        failureRedirect: '/login' }))
-  //app.get('/logout', function(req, res){
-  //  req.logout();
-  //  res.redirect('/');
-  //});
+
+  app.get('/logout', function(req, res){
+    req.logout();
+    res.redirect('/');
+  });
+
+  function ensureAuthenticated(req, res, next) {
+    console.log(req.isAuthenticated());
+    if (req.isAuthenticated()) { return next(); }
+    res.redirect('/')
+  }
 }

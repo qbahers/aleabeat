@@ -6,7 +6,7 @@ Track.$inject = ['$resource'];
 
 function Track ($resource) {
     return $resource('/api/tracks/:_id', 
-    	{ _id: '@_id' }, 
-    	{ update: { method: 'PUT' } }
-	);
+        { _id: '@_id' },
+        { update: { method: 'PUT' } }
+    );
 }
