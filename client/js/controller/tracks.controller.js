@@ -2,9 +2,9 @@ angular
     .module('xplore-app')
     .controller('TracksController', TracksController);
 
-TracksController.$inject = ['$scope', 'Track', 'User', '$routeParams', '$location'];
+TracksController.$inject = ['$scope', 'Track', 'Account', 'User', '$routeParams', '$location'];
 
-function TracksController ($scope, Track, User, $routeParams, $location) {
+function TracksController ($scope, Track, Account, User, $routeParams, $location) {
     $scope.like = "Like";
 
     $scope.init = function () {
@@ -15,19 +15,19 @@ function TracksController ($scope, Track, User, $routeParams, $location) {
                 document.getElementById("player")
             );
 
-            // Disclaimer: The user id is hardcoded for now, until an
-            // authentication system is implemented.
-            User.get({ _id: '550c0bd1a757f45a02db6fe5' }, function (user) {
-                tracks = user.favoriteTracks;
+            Account.get({}, function (account) {
+                User.get({ _id: account._id }, function (user) {
+                    tracks = user.favoriteTracks;
 
-                // TODO: Check if there is a better way to figure out if the
-                // track being played has already been favorited
-                for (i = 0; i < tracks.length; i++) {
-                    if (tracks[i]._id === track._id) {
-                        $scope.like = "Unlike";
-                        break;
+                    // TODO: Check if there is a better way to figure out if the
+                    // track being played has already been favorited
+                    for (i = 0; i < tracks.length; i++) {
+                        if (tracks[i]._id === track._id) {
+                            $scope.like = "Unlike";
+                            break;
+                        }
                     }
-                }
+                });
             });
         });
     };
@@ -40,26 +40,26 @@ function TracksController ($scope, Track, User, $routeParams, $location) {
             track.$update();
         });
 
-        // Disclaimer: The user id is hardcoded for now, until an
-        // authentication system is implemented.
-        User.get({ _id: "550c0bd1a757f45a02db6fe5" }, function (user) {
-            var favorites = [];
-            user.favoriteTracks.forEach (function (track) {
-                favorites.push(track._id);
+        Account.get({}, function (account) {
+            User.get({ _id: account._id }, function (user) {
+                var favorites = [];
+                user.favoriteTracks.forEach (function (track) {
+                    favorites.push(track._id);
+                });
+
+                if ($scope.like === "Like") {
+                    favorites.push($routeParams._id);
+                }
+                else {
+                    var index = favorites.indexOf($routeParams._id);
+                    favorites.splice(index, 1);
+                }
+
+                user.favoriteTracks = favorites;
+                user.$update();
+
+                $scope.like = ($scope.like === "Like") ? "Unlike" : "Like";
             });
-
-            if ($scope.like === "Like") {
-                favorites.push($routeParams._id);
-            }
-            else {
-                var index = favorites.indexOf($routeParams._id);
-                favorites.splice(index, 1);
-            }
-
-            user.favoriteTracks = favorites;
-            user.$update();
-
-            $scope.like = ($scope.like === "Like") ? "Unlike" : "Like";
         });
     };
 

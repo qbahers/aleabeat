@@ -10,8 +10,10 @@ module.exports = function(app, passport) {
   app.get('/api/users/:id', usersController.read);
   app.put('/api/users/:id', usersController.update);
 
+  //app.get('/api/users/me', ensureAuthenticated, function(req, res){
   app.get('/account', ensureAuthenticated, function(req, res){
-    res.json({ user: req.user });
+    //res.render('account', { user: req.user });
+    res.json(req.user);
   });
 
   app.get('/auth/twitter', passport.authenticate('twitter'));

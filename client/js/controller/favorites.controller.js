@@ -2,19 +2,19 @@ angular
     .module('xplore-app')
     .controller('FavoritesController', FavoritesController);
 
-FavoritesController.$inject = ['$scope', 'User'];
+FavoritesController.$inject = ['$scope', 'Account', 'User'];
 
-function FavoritesController ($scope, User) {
+function FavoritesController ($scope, Account, User) {
 
     $scope.favorites = [];
 
-    // Disclaimer: The user id is hardcoded for now, until an authentication
-    // system is implemented.
-    User.get({ _id: '550c0bd1a757f45a02db6fe5' }, function (user) {
-        tracks = user.favoriteTracks;
+    Account.get({}, function (account) {
+        User.get({ _id: account._id }, function (user) {
+            tracks = user.favoriteTracks;
 
-        tracks.forEach(function(track) {
-            $scope.favorites.push(track);
+            tracks.forEach(function(track) {
+                $scope.favorites.push(track);
+            });
         });
     });
 };
