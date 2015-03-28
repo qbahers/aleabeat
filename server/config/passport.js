@@ -20,7 +20,7 @@ module.exports = function(passport) {
       callbackURL: "http://127.0.0.1:3000/auth/twitter/callback"
     },
     function(token, tokenSecret, profile, done) {
-      console.log(profile);
+      //console.log(profile);
       
       User.findOne({ 'twitter.id': profile.id }, function(err, user) {
         if (err)

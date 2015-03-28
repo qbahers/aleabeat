@@ -18,12 +18,15 @@
 
             <ul class="pure-menu-list">
                 <li class="pure-menu-item pure-menu-selected"><a href="#/" class="pure-menu-link">Home</a></li>
-                <li class="pure-menu-item"><a href="#/favorites" class="pure-menu-link">Favorites</a></li>
-                <li class="pure-menu-item"><a href="#/" class="pure-menu-link" ng-click="next()">Explore</a></li>
+                <li class="pure-menu-item" ng-show="authenticated"><a href="#/favorites" class="pure-menu-link">Favorites</a></li>
+                <li class="pure-menu-item" ng-show="authenticated"><a href="#/" class="pure-menu-link" ng-click="next()">Explore</a></li>
             </ul>
 
-            <ul class="pure-menu-list pull-right">
+            <ul class="pure-menu-list pull-right" ng-show="!authenticated">
                 <li class="pure-menu-item"><a href="/auth/twitter" class="pure-menu-link">Sign in</a></li>
+            </ul>
+            <ul class="pure-menu-list pull-right" ng-show="authenticated">
+                <li class="pure-menu-item"><a href="/logout" class="pure-menu-link">Sign out</a></li>
             </ul>
         </div>
     </div>
