@@ -5,7 +5,7 @@ angular
 TracksController.$inject = ['$scope', 'Track', 'Account', 'User', '$routeParams', '$location'];
 
 function TracksController ($scope, Track, Account, User, $routeParams, $location) {
-    $scope.like = "Like";
+    $scope.like = true;
 
     $scope.init = function () {
         Track.get({ _id: $routeParams._id }, function (track) {
@@ -23,7 +23,7 @@ function TracksController ($scope, Track, Account, User, $routeParams, $location
                     // track being played has already been favorited
                     for (i = 0; i < tracks.length; i++) {
                         if (tracks[i]._id === track._id) {
-                            $scope.like = "Unlike";
+                            $scope.like = false;
                             break;
                         }
                     }
@@ -36,7 +36,7 @@ function TracksController ($scope, Track, Account, User, $routeParams, $location
 
     $scope.upvote = function () {
         Track.get({ _id: $routeParams._id }, function (track) {
-            track.upvotes = ($scope.like === "Like") ? track.upvotes + 1 : track.upvotes - 1;
+            track.upvotes = ($scope.like) ? track.upvotes + 1 : track.upvotes - 1;
             track.$update();
         });
 
@@ -47,7 +47,7 @@ function TracksController ($scope, Track, Account, User, $routeParams, $location
                     favorites.push(track._id);
                 });
 
-                if ($scope.like === "Like") {
+                if ($scope.like) {
                     favorites.push($routeParams._id);
                 }
                 else {
@@ -58,7 +58,7 @@ function TracksController ($scope, Track, Account, User, $routeParams, $location
                 user.favoriteTracks = favorites;
                 user.$update();
 
-                $scope.like = ($scope.like === "Like") ? "Unlike" : "Like";
+                $scope.like = ($scope.like) ? false : true;
             });
         });
     };

@@ -2,8 +2,11 @@
     <div class="jumbotron">
         <div id="player"></div>
         <div class="controls">
-            <button class="pure-button button-secondary button-xlarge button-up" ng-click="upvote()">{{like}}</button>
-            <button class="pure-button button-secondary button-xlarge button-down" ng-click="next()">Dislike</button>
+            <button class="pure-button button-secondary button-xlarge button-up" ng-click="upvote()">
+                <i class="fa fa-heart-o" ng-if="like"></i>
+                <i class="fa fa-heart" ng-if="!like"></i>
+            </button>
+            <button class="pure-button button-secondary button-xlarge button-down" ng-click="next()"><i class="fa fa-forward"></i></button>
         </div>
     </div>
 </div>

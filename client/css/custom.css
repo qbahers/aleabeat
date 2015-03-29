@@ -1,49 +1,53 @@
 .header {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 .container {
-    max-width: 800px;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
+  max-width: 800px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .jumbotron {
-    margin-top: 100px;
-    text-align: center;
-    border: 1px solid #e5e5e5;
-    border-radius: 6px;
-    padding: 10px;
+  margin-top: 100px;
+  text-align: center;
+  border: 1px solid #e5e5e5;
+  border-radius: 6px;
+  padding: 10px;
 }
 
 .button-secondary {
-    color: white;
-    border-radius: 4px;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  color: white;
+  border-radius: 4px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
 }
 
 .button-xlarge {
-    font-size: 125%;
+  font-size: 125%;
 }
 
 .button-up {
-    background: rgba(255, 85, 0, 0.9);
+  background: rgba(255, 85, 0, 0.9);
 }
 
 .button-down {
-    background: #bbb;
+  background: #bbb;
 }
 
 .bottom {
-    padding-top: 20px;
+  padding-top: 20px;
 }
 
 .track-details {
   border-bottom: 1px solid #eee;
   padding-top: 20px;
   padding-bottom: 10px;
+}
+
+.track-details .fa {
+  margin-right: 4px;
 }
 
 .tracks-details, a {
@@ -67,8 +71,17 @@
   font-size: 12px;
 }
 
-.fa {
-    margin-right: 4px;
+.controls {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.controls button {
+  margin: 5px;
+}
+
+.button-xlarge {
+  font-size: 140%;
 }
 
 .trending-today {
