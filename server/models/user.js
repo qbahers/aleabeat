@@ -3,10 +3,11 @@ var Schema   = mongoose.Schema;
 
 var userSchema = new Schema({
   twitter: {
-    id:          String,
-    token:       String,
-    username:    String,
-    displayName: String
+    id:              String,
+    token:           String,
+    username:        String,
+    displayName:     String,
+    profileImageUrl: String
   },
   favoriteTracks: [{ type: Schema.Types.ObjectId, ref: 'Track' }]
 });
