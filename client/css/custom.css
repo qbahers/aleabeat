@@ -30,10 +30,12 @@
 
 .button-up {
   background: rgba(255, 85, 0, 0.9);
+  width: 70px;
 }
 
 .button-down {
   background: #bbb;
+  width: 70px;
 }
 
 .bottom {
