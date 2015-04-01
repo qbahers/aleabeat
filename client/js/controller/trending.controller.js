@@ -14,7 +14,11 @@ function TrendingController ($scope, $rootScope, Account, Track) {
 
     $scope.tracks = [];
 
-    Track.query(function (result) {
-        $scope.tracks = result;
+    Track.query(function (tracks) {
+        tracks.sort(function (trackA, trackB) { 
+            return trackB.upvotes - trackA.upvotes;
+        });
+
+        $scope.tracks = tracks.slice(0, 5);
     });
 };
