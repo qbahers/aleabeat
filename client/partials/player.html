@@ -1,10 +1,10 @@
 <div class="container" ng-controller="TracksController">
     <div class="jumbotron">
         <div id="player"></div>
-        <div class="controls" ng-show="authenticated">
+        <div class="controls" ng-show="authenticated" ng-cloak>
             <button class="pure-button button-secondary button-xlarge button-up" ng-click="upvote()">
-                <i class="fa fa-heart-o" ng-if="like"></i>
-                <i class="fa fa-heart" ng-if="!like"></i>
+                <i class="fa fa-heart-o" ng-show="like"></i>
+                <i class="fa fa-heart" ng-show="!like"></i>
             </button>
             <button class="pure-button button-secondary button-xlarge button-down" ng-click="next()"><i class="fa fa-step-forward"></i></button>
         </div>
