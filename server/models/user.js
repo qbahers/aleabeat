@@ -9,7 +9,13 @@ var userSchema = new Schema({
     displayName:     String,
     profileImageUrl: String
   },
-  favoriteTracks: [{ type: Schema.Types.ObjectId, ref: 'Track' }]
+  favoriteTracks: [{
+    details: {
+      type: Schema.Types.ObjectId, 
+      ref:  'Track'
+    },
+    date: { type: Date, default: Date.now }
+  }]
 });
 
 var User = mongoose.model('User', userSchema);

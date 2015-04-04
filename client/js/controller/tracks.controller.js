@@ -22,7 +22,7 @@ function TracksController ($scope, Track, Account, User, $routeParams, $location
                     // TODO: Check if there is a better way to figure out if the
                     // track being played has already been favorited
                     for (i = 0; i < tracks.length; i++) {
-                        if (tracks[i]._id === track._id) {
+                        if (tracks[i].details._id === track._id) {
                             $scope.like = false;
                             break;
                         }
@@ -44,14 +44,23 @@ function TracksController ($scope, Track, Account, User, $routeParams, $location
             User.get({ _id: account._id }, function (user) {
                 var favorites = [];
                 user.favoriteTracks.forEach (function (track) {
-                    favorites.push(track._id);
+                    var favorite = { 
+                            details: track.details._id, 
+                            _id:     track._id, 
+                            date:    track.date 
+                        };
+
+                    favorites.push(favorite);
                 });
 
                 if ($scope.like) {
-                    favorites.push($routeParams._id);
+                    favorites.push({ details: $routeParams._id });
                 }
                 else {
-                    var index = favorites.indexOf($routeParams._id);
+                    var index = favorites
+                                    .map(function(e) { return e.details; })
+                                    .indexOf($routeParams._id);
+                    
                     favorites.splice(index, 1);
                 }
 
