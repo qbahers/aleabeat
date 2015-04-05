@@ -6,7 +6,7 @@
                 <a ng-href="/#/{{favorite.details._id}}" class="track-title">{{favorite.details.title}}</a>
                 <p class="track-artist">{{favorite.details.artist}}</p>
 
-                <p>{{favorite.date}}</p>
+                <p>Favorited <span am-time-ago="favorite.date"></span></p>
             </div>
         </li>
     </ul>
