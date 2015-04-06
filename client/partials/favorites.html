@@ -3,10 +3,9 @@
     <ul>
         <li class="favorite-track" ng-repeat="favorite in favorites | orderBy:favoritedDate:true">
             <div class="track-details">
+                <p class="track-favorited-time">Favorited <span am-time-ago="favorite.date"></span></p>
                 <a ng-href="/#/{{favorite.details._id}}" class="track-title">{{favorite.details.title}}</a>
                 <p class="track-artist">{{favorite.details.artist}}</p>
-
-                <p>Favorited <span am-time-ago="favorite.date"></span></p>
             </div>
         </li>
     </ul>

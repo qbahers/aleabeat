@@ -44,8 +44,8 @@
 
 .track-details {
   border-bottom: 1px solid #eee;
-  padding-top: 20px;
-  padding-bottom: 10px;
+  padding-top: 25px;
+  padding-bottom: 15px;
 }
 
 .track-details .fa {
@@ -73,6 +73,13 @@
   font-size: 12px;
 }
 
+.track-favorited-time {
+  float: right;
+  margin-top: 0px;
+  color: #888;
+  font-size: 13px;
+}
+
 .controls {
   margin-top: 20px;
   margin-bottom: 10px;
@@ -95,6 +102,7 @@
 }
 
 .favorite-tracks, ul {
+  padding-left: 20px;
   list-style-type: none;
 }
 
