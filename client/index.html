@@ -30,7 +30,7 @@
                 <li class="pure-menu-item"><a href="/auth/twitter" class="pure-menu-link">Sign in</a></li>
             </ul>
             <ul class="pure-menu-list pull-right" ng-show="authenticated" ng-cloak>
-                <li class="pure-menu-item"><img src="{{profileImageUrl}}" class="profileImage"></li>
+                <li class="pure-menu-item"><img ng-src="{{profileImageUrl}}" class="profileImage"></li>
                 <li class="pure-menu-item"><a href="/logout" class="pure-menu-link">Sign out</a></li>
             </ul>
         </div>
