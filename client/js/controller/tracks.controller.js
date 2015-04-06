@@ -16,18 +16,20 @@ function TracksController ($scope, Track, Account, User, $routeParams, $location
             );
 
             Account.get({}, function (account) {
-                User.get({ _id: account._id }, function (user) {
-                    tracks = user.favoriteTracks;
+                if (account._id !== undefined) {
+                    User.get({ _id: account._id }, function (user) {
+                        tracks = user.favoriteTracks;
 
-                    // TODO: Check if there is a better way to figure out if the
-                    // track being played has already been favorited
-                    for (i = 0; i < tracks.length; i++) {
-                        if (tracks[i].details._id === track._id) {
-                            $scope.like = false;
-                            break;
+                        // TODO: Check if there is a better way to figure out if the
+                        // track being played has already been favorited
+                        for (i = 0; i < tracks.length; i++) {
+                            if (tracks[i].details._id === track._id) {
+                                $scope.like = false;
+                                break;
+                            }
                         }
-                    }
-                });
+                    });
+                }
             });
         });
     };
@@ -41,34 +43,36 @@ function TracksController ($scope, Track, Account, User, $routeParams, $location
         });
 
         Account.get({}, function (account) {
-            User.get({ _id: account._id }, function (user) {
-                var favorites = [];
-                user.favoriteTracks.forEach (function (track) {
-                    var favorite = { 
-                            details: track.details._id, 
-                            _id:     track._id, 
-                            date:    track.date 
-                        };
+            if (account._id !== undefined) {
+                User.get({ _id: account._id }, function (user) {
+                    var favorites = [];
+                    user.favoriteTracks.forEach (function (track) {
+                        var favorite = {
+                                details: track.details._id,
+                                _id:     track._id,
+                                date:    track.date
+                            };
 
-                    favorites.push(favorite);
+                        favorites.push(favorite);
+                    });
+
+                    if ($scope.like) {
+                        favorites.push({ details: $routeParams._id });
+                    }
+                    else {
+                        var index = favorites
+                                        .map(function(e) { return e.details; })
+                                        .indexOf($routeParams._id);
+
+                        favorites.splice(index, 1);
+                    }
+
+                    user.favoriteTracks = favorites;
+                    user.$update();
+
+                    $scope.like = ($scope.like) ? false : true;
                 });
-
-                if ($scope.like) {
-                    favorites.push({ details: $routeParams._id });
-                }
-                else {
-                    var index = favorites
-                                    .map(function(e) { return e.details; })
-                                    .indexOf($routeParams._id);
-                    
-                    favorites.splice(index, 1);
-                }
-
-                user.favoriteTracks = favorites;
-                user.$update();
-
-                $scope.like = ($scope.like) ? false : true;
-            });
+            }
         });
     };
 

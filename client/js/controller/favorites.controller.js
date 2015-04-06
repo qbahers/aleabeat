@@ -9,13 +9,15 @@ function FavoritesController ($scope, Account, User) {
     $scope.favorites = [];
 
     Account.get({}, function (account) {
-        User.get({ _id: account._id }, function (user) {
-            tracks = user.favoriteTracks;
+        if (account._id !== undefined) {
+            User.get({ _id: account._id }, function (user) {
+                tracks = user.favoriteTracks;
 
-            tracks.forEach(function(track) {
-                $scope.favorites.push(track);
+                tracks.forEach(function(track) {
+                    $scope.favorites.push(track);
+                });
             });
-        });
+        }
     });
 
     $scope.favoritedDate = function (favorite) {
