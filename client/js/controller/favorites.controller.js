@@ -17,4 +17,9 @@ function FavoritesController ($scope, Account, User) {
             });
         });
     });
+
+    $scope.favoritedDate = function (favorite) {
+        var date = new Date(favorite.date).getTime();
+        return date;
+    };
 };

@@ -1,7 +1,7 @@
 <div class="container favorite-tracks" ng-controller="TrendingController">
     <p class="favorites-title">Your Favorites<p>
     <ul>
-        <li class="favorite-track" ng-repeat="favorite in favorites">
+        <li class="favorite-track" ng-repeat="favorite in favorites | orderBy:favoritedDate:true">
             <div class="track-details">
                 <a ng-href="/#/{{favorite.details._id}}" class="track-title">{{favorite.details.title}}</a>
                 <p class="track-artist">{{favorite.details.artist}}</p>
