@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="/client/css/custom.css">
+    <link rel="stylesheet" href="/client/css/custom.css">
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular-route.js"></script>
@@ -21,17 +21,29 @@
             <a href="#/" class="pure-menu-heading">AleaBeat</a>
 
             <ul class="pure-menu-list">
-                <li class="pure-menu-item pure-menu-selected"><a href="#/" class="pure-menu-link">Home</a></li>
-                <li class="pure-menu-item" ng-show="authenticated" ng-cloak><a href="#/favorites" class="pure-menu-link">Favorites</a></li>
-                <li class="pure-menu-item" ng-show="authenticated" ng-cloak><a href="#/" class="pure-menu-link" ng-click="next()">Explore</a></li>
+                <li class="pure-menu-item pure-menu-selected">
+                    <a href="#/" class="pure-menu-link">Home</a>
+                </li>
+                <li class="pure-menu-item" ng-show="authenticated" ng-cloak>
+                    <a href="#/favorites" class="pure-menu-link">Favorites</a>
+                </li>
+                <li class="pure-menu-item" ng-show="authenticated" ng-cloak>
+                    <a href="#/" class="pure-menu-link" ng-click="next()">Explore</a>
+                </li>
             </ul>
 
-            <ul class="pure-menu-list pull-right" ng-show="!authenticated" ng-cloak>
-                <li class="pure-menu-item"><a href="/auth/twitter" class="pure-menu-link">Sign in</a></li>
+            <ul class="pure-menu-list pull-right" ng-hide="authenticated" ng-cloak>
+                <li class="pure-menu-item">
+                    <a href="/auth/twitter" class="pure-menu-link">Sign in</a>
+                </li>
             </ul>
             <ul class="pure-menu-list pull-right" ng-show="authenticated" ng-cloak>
-                <li class="pure-menu-item"><img ng-src="{{profileImageUrl}}" class="profileImage"></li>
-                <li class="pure-menu-item"><a href="/logout" class="pure-menu-link">Sign out</a></li>
+                <li class="pure-menu-item">
+                    <img ng-src="{{profileImageUrl}}" class="profileImage">
+                </li>
+                <li class="pure-menu-item">
+                    <a href="/logout" class="pure-menu-link">Sign out</a>
+                </li>
             </ul>
         </div>
     </div>

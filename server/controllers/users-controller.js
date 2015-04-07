@@ -7,10 +7,10 @@ module.exports.update = function (req, res) {
 }
 
 module.exports.read = function (req, res) {
-	User
-	.findById(req.params.id)
-	.populate('favoriteTracks.details')
-	.exec(function (err, result) {
-		res.json(result);
-	})
+  User
+  .findById(req.params.id)
+  .populate('favoriteTracks.details')
+  .exec(function (err, result) {
+    res.json(result);
+  })
 };

@@ -4,9 +4,11 @@
         <div class="controls" ng-show="authenticated" ng-cloak>
             <button class="pure-button button-secondary button-xlarge button-up" ng-click="upvote()">
                 <i class="fa fa-heart-o" ng-show="like"></i>
-                <i class="fa fa-heart" ng-show="!like"></i>
+                <i class="fa fa-heart" ng-hide="like"></i>
             </button>
-            <button class="pure-button button-secondary button-xlarge button-down" ng-click="next()"><i class="fa fa-step-forward"></i></button>
+            <button class="pure-button button-secondary button-xlarge button-down" ng-click="next()">
+                <i class="fa fa-step-forward"></i>
+            </button>
         </div>
     </div>
 </div>
