@@ -4,7 +4,7 @@
     <ol id="trending-tracks">
         <li class="trending-track" ng-repeat="track in tracks">
             <div class="track-details">
-                <p class="track-upvotes"><i class="fa fa-heart"></i>{{track.upvotes}}</p>
+                <p class="track-upvotes"><i class="fa fa-heart"></i>{{track.upvotes | number}}</p>
                 <a ng-href="/#/{{track._id}}" class="track-title">{{track.title}}</a>
                 <p class="track-artist">{{track.artist}}</p>
             </div>
