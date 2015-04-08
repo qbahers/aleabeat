@@ -1,4 +1,5 @@
 var express          = require('express'),
+    morgan           = require('morgan'),
     app              = express(),
     cookieParser     = require('cookie-parser'),
     bodyParser       = require('body-parser'),
@@ -10,6 +11,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/xplore');
 
 require('./server/config/passport')(passport);
 
+app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
