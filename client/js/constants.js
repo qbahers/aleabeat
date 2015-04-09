@@ -1,5 +1,5 @@
   angular
-    .module('xplore-app')
+    .module('aleabeat-app')
     .constant('angularMomentConfig', {
         preprocess: 'utc',
         timezone: 'Europe/London'

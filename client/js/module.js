@@ -1,1 +1,1 @@
-angular.module('xplore-app', ['ngRoute', 'ngResource', 'angularMoment']);
+angular.module('aleabeat-app', ['ngRoute', 'ngResource', 'angularMoment']);

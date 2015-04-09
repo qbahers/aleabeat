@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-    .module('xplore-app')
+    .module('aleabeat-app')
     .controller('TrendingController', TrendingController);
 
 TrendingController.$inject = ['$scope', '$rootScope', 'Account', 'Track'];

@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-    .module('xplore-app')
+    .module('aleabeat-app')
     .factory('Track', Track);
 
 Track.$inject = ['$resource'];

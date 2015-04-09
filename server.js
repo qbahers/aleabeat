@@ -7,7 +7,7 @@ var express          = require('express'),
     session          = require('express-session'),
     passport         = require('passport');
 
-mongoose.connect('mongodb://127.0.0.1:27017/xplore');
+mongoose.connect('mongodb://127.0.0.1:27017/aleabeat');
 
 require('./server/config/passport')(passport);
 

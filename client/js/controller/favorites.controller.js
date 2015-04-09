@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-    .module('xplore-app')
+    .module('aleabeat-app')
     .controller('FavoritesController', FavoritesController);
 
 FavoritesController.$inject = ['$scope', 'Account', 'User'];

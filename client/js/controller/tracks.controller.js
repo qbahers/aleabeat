@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-    .module('xplore-app')
+    .module('aleabeat-app')
     .controller('TracksController', TracksController);
 
 TracksController.$inject = ['$scope', 'Track', 'Account', 'User', '$routeParams', '$location'];
