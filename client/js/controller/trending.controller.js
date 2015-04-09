@@ -1,3 +1,5 @@
+'use strict';
+
 angular
     .module('xplore-app')
     .controller('TrendingController', TrendingController);
@@ -21,4 +23,4 @@ function TrendingController ($scope, $rootScope, Account, Track) {
 
         $scope.tracks = tracks.slice(0, 5);
     });
-};
+}

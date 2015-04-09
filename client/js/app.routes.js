@@ -1,3 +1,5 @@
+'use strict';
+
 angular
     .module('xplore-app')
     .config(['$routeProvider', function($routeProvider) {

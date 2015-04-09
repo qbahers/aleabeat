@@ -1,3 +1,5 @@
+'use strict';
+
 angular
     .module('xplore-app')
     .factory('User', User);

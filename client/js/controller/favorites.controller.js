@@ -1,3 +1,5 @@
+'use strict';
+
 angular
     .module('xplore-app')
     .controller('FavoritesController', FavoritesController);
@@ -11,7 +13,7 @@ function FavoritesController ($scope, Account, User) {
     Account.get({}, function (account) {
         if (account._id !== undefined) {
             User.get({ _id: account._id }, function (user) {
-                tracks = user.favoriteTracks;
+                var tracks = user.favoriteTracks;
 
                 tracks.forEach(function(track) {
                     $scope.favorites.push(track);
@@ -24,4 +26,4 @@ function FavoritesController ($scope, Account, User) {
         var date = new Date(favorite.date).getTime();
         return date;
     };
-};
+}

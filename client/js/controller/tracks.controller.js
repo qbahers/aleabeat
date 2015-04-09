@@ -1,3 +1,5 @@
+'use strict';
+
 angular
     .module('xplore-app')
     .controller('TracksController', TracksController);
@@ -10,19 +12,19 @@ function TracksController ($scope, Track, Account, User, $routeParams, $location
     $scope.init = function () {
         Track.get({ _id: $routeParams._id }, function (track) {
             SC.oEmbed(
-                "http://api.soundcloud.com/tracks/" + track.id,
+                'http://api.soundcloud.com/tracks/' + track.id,
                 { auto_play: true, show_comments: false },
-                document.getElementById("player")
+                document.getElementById('player')
             );
 
             Account.get({}, function (account) {
                 if (account._id !== undefined) {
                     User.get({ _id: account._id }, function (user) {
-                        tracks = user.favoriteTracks;
+                        var tracks = user.favoriteTracks;
 
                         // TODO: Check if there is a better way to figure out if the
                         // track being played has already been favorited
-                        for (i = 0; i < tracks.length; i++) {
+                        for (var i = 0; i < tracks.length; i += 1) {
                             if (tracks[i].details._id === track._id) {
                                 $scope.like = false;
                                 break;
@@ -82,4 +84,4 @@ function TracksController ($scope, Track, Account, User, $routeParams, $location
             $location.path('/' + next_track._id);
         });
     };
-};
+}
