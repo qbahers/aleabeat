@@ -29,7 +29,7 @@
 }
 
 .button-up {
-  background: rgba(255, 85, 0, 0.9);
+  background: #ff5500;
   width: 70px;
 }
 
@@ -75,7 +75,7 @@
 
 .track-favorited-time {
   float: right;
-  margin-top: 0px;
+  margin-top: 0;
   color: #888;
   font-size: 13px;
 }
