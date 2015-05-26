@@ -3,7 +3,8 @@ var express      = require('express'),
     compression  = require('compression'),
     morgan       = require('morgan'),
     cookieParser = require('cookie-parser'),
-    bodyParser   = require('body-parser');
+    bodyParser   = require('body-parser'),
+    csrf         = require('csurf');
 
 module.exports = function (app, passport) {
   app.use(compression({
@@ -20,6 +21,13 @@ module.exports = function (app, passport) {
   }));
   app.use(passport.initialize());
   app.use(passport.session());
+
+  app.use(csrf());
+
+  app.use(function (req, res, next) {
+    res.locals.csrf_token = req.csrfToken();
+    next();
+  });
 
   app.use('/client', express.static(__dirname + '/../../client'));
 }
