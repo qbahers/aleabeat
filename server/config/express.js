@@ -1,10 +1,14 @@
 var express      = require('express'),
     session      = require('express-session'),
+    compression  = require('compression'),
     morgan       = require('morgan'),
     cookieParser = require('cookie-parser'),
     bodyParser   = require('body-parser');
 
 module.exports = function (app, passport) {
+  app.use(compression({
+    threshold: 512
+  }));
   app.use(morgan('dev'));
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: false }));
